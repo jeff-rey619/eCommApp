@@ -3,6 +3,7 @@
     justify-content: space-around;
     padding: 16px;
     box-shadow: 0 1px 3px -2px black     ;
+    align-items: center;
 }
 
 .nav-logo{
@@ -158,9 +159,41 @@
          display: block;
     }
     .nav-menu{
-       display: flex;
+       display: none;
        height: 80px;
        width: 100%;
        position: absolute; 
+       background: #fff;
+       justify-content: center;
+       top: 50px;
+    }
+    .nav-menu-visible {
+        display: flex;
+    }
+
+    .nav-dropdown.open {
+        transform: rotate(90deg);
     }
 }
+
+
+@media(max-width:500px){
+    .navbar {
+        width: 8px 0px;
+        gap: 0;;
+    }
+
+    .nav-logo {
+        transform:scale(0.8)
+    }
+
+    .nav-menu {
+        height: 70px;
+        top: 50px;
+    }
+
+    .nav-login-cart {
+        transform: scale(0.8);
+    }
+}
+ 
