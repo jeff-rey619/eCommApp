@@ -167,7 +167,6 @@
         display: none;
         grid-template-columns: 0.5fr 3fr 0.5fr;
         gap: 10px;
-
     }
     .cartItems-format {
         display: grid;
