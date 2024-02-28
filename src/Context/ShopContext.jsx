@@ -27,6 +27,23 @@ const ShopContextProvider = (props) => {
                
             set_Allproduct(res)
         })
+
+        if (localStorage.getItem('auth-token')) {
+            fetch('http://localhost:4000/getcart', {
+                method: "POST",
+                headers: {
+                    Accept: "application/form-data",
+                    'auth-token': `${localStorage.getItem('auth-token')}`,
+                    'Content-Type':'application/json'
+                },
+                body:""
+             })
+            .then((res) => res.json())
+            .then((res) => {
+               
+            setCartItems(res)
+        })
+        }
     },[])
     
   
@@ -35,12 +52,46 @@ const ShopContextProvider = (props) => {
         setCartItems((previous) => ({
             ...previous,[itemid]:previous[itemid]+1
         }))
+        if (localStorage.getItem('auth-token')) {
+           fetch('http://localhost:4000/addtocart', {
+              method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'auth-token':`${localStorage.getItem('auth-token')}`,
+                'Content-Type': 'application/json',
+            
+                },
+            body: JSON.stringify({"itemId":itemid})
+           })
+                .then((res) => res.json())
+               .then((res) => {
+                console.log(res)
+            })
+            
+        }
     }
 
      const removefromcart = (itemid) => {
         setCartItems((previous) => ({
             ...previous,[itemid]:previous[itemid]-1
         }))
+          if (localStorage.getItem('auth-token')) {
+           fetch('http://localhost:4000/removefromcart', {
+              method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'auth-token':`${localStorage.getItem('auth-token')}`,
+                'Content-Type': 'application/json',
+            
+                },
+            body: JSON.stringify({"itemId":itemid})
+           })
+                .then((res) => res.json())
+               .then((res) => {
+                console.log(res)
+            })
+            
+        }
     }
 
     function getTotalCartItems() {
