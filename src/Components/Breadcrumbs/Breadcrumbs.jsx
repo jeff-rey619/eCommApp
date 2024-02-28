@@ -9,7 +9,7 @@ function BreadCrumbs(props) {
 
     return (
         <div className="breadcrumbs">
-            HOME <img src={Arrow_icon} alt="" /> SHOP <img src={Arrow_icon} alt="" /> {product.product.category} <img src={Arrow_icon} alt="" /> {product.product.name}
+            HOME <img src={Arrow_icon} alt="" /> SHOP <img src={Arrow_icon} alt="" /> {product.product?.category} <img src={Arrow_icon} alt="" /> {product.product?.name}
         </div>
     )
 }
